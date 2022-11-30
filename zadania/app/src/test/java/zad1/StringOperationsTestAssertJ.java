@@ -3,7 +3,7 @@ package zad1;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class StringOperationsTestAssertJ {
     @Test
@@ -11,7 +11,7 @@ class StringOperationsTestAssertJ {
         StringOperations classUnderTest = new StringOperations();
         String testPalindrome = "The quick brown fox jumps over the lazy dog";
 
-        assertTrue(classUnderTest.isPalindrome(testPalindrome));
+        assertThat(classUnderTest.isPalindrome(testPalindrome)).isTrue();
     }
 
     @Test
@@ -19,21 +19,21 @@ class StringOperationsTestAssertJ {
         StringOperations classUnderTest = new StringOperations();
         String testPalindrome = "The quicsdsd over thsaddy dog";
 
-        assertFalse(classUnderTest.isPalindrome(testPalindrome));
+        assertThat(classUnderTest.isPalindrome(testPalindrome)).isFalse();
     }
 
     @Test
     void contact() {
         StringOperations classUnderTest = new StringOperations();
 
-        assertEquals("testtest2", classUnderTest.concat("test", "test2"));
+        assertThat(classUnderTest.concat("test", "test2")).isEqualTo("testtest2");
     }
 
     @Test
     void contactWhiteSpace() {
         StringOperations classUnderTest = new StringOperations();
 
-        assertEquals("test  test2", classUnderTest.concat("test ", " test2"));
+        assertThat(classUnderTest.concat("test ", " test2")).isEqualTo("test  test2");
     }
 
     @Test
@@ -41,7 +41,7 @@ class StringOperationsTestAssertJ {
         StringOperations classUnderTest = new StringOperations();
         String testString = "abc";
 
-        assertEquals("cba", classUnderTest.reverse(testString));
+        assertThat(classUnderTest.reverse(testString)).isEqualTo("cba");
     }
 
 
