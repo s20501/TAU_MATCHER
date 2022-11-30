@@ -5,13 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.assertj.core.api.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThat;
-
-class StringOperationsTest {
+class StringOperationsTestAssertJ {
     @Test
     void singlePangram() {
         StringOperations classUnderTest = new StringOperations();
@@ -50,11 +44,6 @@ class StringOperationsTest {
         assertEquals("cba", classUnderTest.reverse(testString));
     }
 
-    @Test
-    void reverseSentence() {
-        StringOperations classUnderTest = new StringOperations();
-        String testString = "The quick brown fox jumps over the lazy dog";
 
-        assertEquals("god yzal eht revo spmuj xof nworb kciuq ehT", classUnderTest.reverse(testString));
-    }
 }
+
