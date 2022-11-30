@@ -30,7 +30,7 @@ class StringOperationsTestHamcrest {
     void contact() {
         StringOperations classUnderTest = new StringOperations();
 
-        assertThat(classUnderTest.concat("test", "test2"), equalTo("testtest2"));
+        assertThat(classUnderTest.concat("test", "test2"), hasToString("testtest2"));
     }
 
     @Test
