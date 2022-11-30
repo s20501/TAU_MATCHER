@@ -26,7 +26,7 @@ class StringOperationsTestAssertJ {
     void contact() {
         StringOperations classUnderTest = new StringOperations();
 
-        assertThat(classUnderTest.concat("test", "test2")).isEqualTo("testtest2");
+        assertThat(classUnderTest.concat("test", "test2")).endsWith("2").startsWith("t").containsSequence("t", "2");
     }
 
     @Test
