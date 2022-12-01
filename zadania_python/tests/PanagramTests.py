@@ -10,33 +10,34 @@ class PanagramTest(unittest.TestCase):
         self.temp = Panagram("abcdefghijklmnopqrstuvwxyz")
 
     def test_single_pangram(self):
-        self.assertEqual([True], self.temp.check(["The quick brown fox jumps over the lazy dog"]))
+        assert_that(self.temp.check(["The quick brown fox jumps over the lazy dog"]), equal_to([True]))
 
-    def test_single_not_pangram(self):
-        self.assertEqual([False], self.temp.check(["Tsddmps over thedxog"]))
+    def test_single_length(self):
+        assert_that(self.temp.check(["The quick brown fox jumps over the lazy dog"]), has_length(1))
 
     def test_few_pangrams(self):
-        self.assertEqual([True, True, True], self.temp.check(
+        assert_that(self.temp.check(
             ["The quick brown fox jumps over the lazy dog", "Pack my box with five dozen liquor jugs",
-             "The five boxing wizards jump quickly"]))
+             "The five boxing wizards jump quickly"]), contains_exactly(True, True, True))
 
     def test_few_not_pangrams(self):
-        self.assertEqual([False, False, False], self.temp.check(
+        assert_that(self.temp.check(
             ["Thexxxx", "Packxxxor jugs",
-             "The fixxp quickly"]))
+             "The fixxp quickly"]), contains_inanyorder(False, False, False))
 
     def test_panagrams_and_not_panagrams_mixed(self):
-        self.assertEqual([True, False, True], self.temp.check(
-            ["The quick brown fox jumps over the lazy dog", "Pack mysdfsdfsd", "The five boxing wizards jump quickly"]))
+        assert_that(self.temp.check(
+            ["The quick brown fox jumps over the lazy dog", "Pack mysdfsdfsd", "The five boxing wizards jump quickly"]),
+            has_item(False))
 
     def test_no_data(self):
-        self.assertEqual([], self.temp.check([]))
+        assert_that(self.temp.check([]), empty())
 
     def test_wrong_data(self):
-        self.assertRaises(Exception, self.temp.check, [123213123])
+        assert_that(calling(self.temp.check).with_args([123213123]), raises(Exception))
 
     def tearDown(self):
-        self.temp = None# add assertion here
+        self.temp = None  # add assertion here
 
 
 if __name__ == '__main__':
